@@ -30,7 +30,6 @@ int main(int argc, char *argv[]) {
          ptr += sizeof(struct inotify_event) + event->len) {
       /* Get the event structure */
       event = (const struct inotify_event *)ptr;
-      printf("%s\n", event->name);
       dir2file(args.dir, args.file);
     }
   }

@@ -8,11 +8,11 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <unistd.h>
-
+#define PATH_BUF 1024
 int dir2file(const char *dirpath, const char *filepath) {
   struct dirent **namelist;
   static char buf[1024];
-  static char path_buf[1024];
+  static char path_buf[PATH_BUF];
   int fd = open(filepath, O_WRONLY);
   if (fd < 0) {
     perror("open");
@@ -25,8 +25,7 @@ int dir2file(const char *dirpath, const char *filepath) {
   }
 
   for (int i = 0; i < n; i++) {
-    sprintf(path_buf, "%s/%s", dirpath, namelist[i]->d_name);
-    printf("%s\n", path_buf);
+    snprintf(path_buf, PATH_BUF, "%s/%s", dirpath, namelist[i]->d_name);
     if (namelist[i]->d_type == DT_REG) {
       int fdo = open(path_buf, O_RDONLY);
       if (fdo < 0) {
