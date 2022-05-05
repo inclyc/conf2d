@@ -1,3 +1,5 @@
 conf2d
 *.o
 
+build
+.xmake
