@@ -6,5 +6,5 @@ struct arguments {
   char *dir;
 };
 
-error_t parse_args(int argc, char *argv[], struct arguments *args);
+error_t conf2d_args(int argc, char *argv[], struct arguments *args);
 #endif

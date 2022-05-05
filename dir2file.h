@@ -1,4 +1,4 @@
-#ifndef READ_DIR_H
-#define READ_DIR_H
+#ifndef DIR_2_FILE_H
+#define DIR_2_FILE_H
 int dir2file(const char *dirpath, const char *filepath);
 #endif
