@@ -25,5 +25,5 @@ static error_t parse_opt(int key, char *arg, struct argp_state *state) {
 static struct argp argp = {options, parse_opt, 0, 0};
 
 error_t parse_args(int argc, char **argv, struct arguments *args) {
-  return argp_parse(&argp, argc, argv, 0, 0, &args);
+  return argp_parse(&argp, argc, argv, 0, 0, args);
 }

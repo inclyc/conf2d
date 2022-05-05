@@ -1,5 +1,5 @@
 #include "args.h"
-#include <dirent.h>
+#include "read_dir.h"
 #include <errno.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -8,12 +8,14 @@
 
 int main(int argc, char *argv[]) {
   struct arguments args;
-  parse_args(argc, argv, &args);
   int inot_fd; /* File descriptor for inotify */
   int inot_wd; /* Watch descriptor for the target file */
   int len, i;
   static char buf[4096];
   const struct inotify_event *event;
+
+  parse_args(argc, argv, &args);
+
   inot_fd = inotify_init();
 
   inot_wd =
@@ -29,6 +31,7 @@ int main(int argc, char *argv[]) {
       /* Get the event structure */
       event = (const struct inotify_event *)ptr;
       printf("%s\n", event->name);
+      dir2file(args.dir, args.file);
     }
   }
 }
