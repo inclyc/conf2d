@@ -1,6 +1,6 @@
 # Introduction
 
-Read in [简体中文](./README_zh.md)
+[简体中文](./README_zh.md)
 
 There are various configuration files in the system, some configuration files allow you to split into a directory, usually in the form of `xxx.conf.d`. However, some files do not support this notation. This program listens for file system changes and starts a scheduled task in another thread to synchronize the contents of the folder with the files.
 
